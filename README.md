@@ -4,5 +4,5 @@
 ## Get movie reviews and watch providers
 * data source <a href="https://www.themoviedb.org">TMDB </a>
 * build with <a href="https://github.com/facebook/react">React JS</a>
-* Hosted at <a href="https://vercel.com">Vercel</a>
-* Live site <a href="https://www.filmflix.ml">filmflix</a>
+* Hosted at <a href="https://app.netlify.com/">Netlify</a>
+* Live site <a href="https://popcornpedia.netlify.app/">PopCornPedia</a>
