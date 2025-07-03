@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+
+.content_img_landscape {
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.contentModel_rating {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 5px;
+}
+
+.genres {
+    justify-content: center;
+}
+
+
+
+.contentModel_rating p {
+    margin: 2.5px;
+}
+
+.content_img {
+    display: none;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.content_tagline {
+    padding-bottom: 5px;
+}
+
+.contentModel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.contentModel::-webkit-scrollbar {
+    display: none;
+}
+
+.contentModel_about {
+    padding: 10px;
+    width: 95%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    font-family: "Roboto", sans-serif;
+    justify-content: space-evenly;
+    font-weight: 300;
+}
+
+.contentModel_about::-webkit-scrollbar {
+    display: none
+}
+
+.content_title {
+    height: 12%;
+    font-size: 5vw;
+    display: flex;
+    align-items: center;
+    padding-bottom: 5px;
+}
+
+.content_dscription {
+    display: flex;
+    height: fit-content;
+    max-height: 40%;
+    overflow-y: scroll;
+    padding: 2px;
+    scrollbar-width: thin;
+    border-left: 2px solid #ffffff;
+}
+
+.content_dscription::-webkit-scrollbar {
+    display: none;
+}
+
+.content_providers {
+    padding-left: 1px;
+    display: flex;
+    flex-direction: column;
+}
+
+.content_providers span {
+    font-family: "Roboto",
+        sans-serif;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.content_providers_img {
+    display: flex;
+    flex-direction: row;
+}
+
+.content_providers_img img {
+    padding-right: 10px;
+    max-width: 50px;
+}
+
+@media (min-width: 835px) {
+    .content_img_landscape {
+        display: none;
+    }
+
+    .content_img {
+        display: flex;
+        width: 38%;
+    }
+
+    .contentModel {
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 10px 0;
+    }
+
+    .contentModel_about {
+        width: 58%;
+        padding: 0;
+        height: 100%;
+    }
+
+    .content_title {
+        font-size: 2vw;
+    }
+
+    .content_dscription {
+        font-size: 22px;
+    }
+}

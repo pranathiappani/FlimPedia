@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+
+* {
+  scroll-behavior: smooth;
+}
+
+.app {
+  min-height: 100vh;
+  background-color: #121212;
+  padding-top: 100px;
+  padding-bottom: 70px;
+  color: #ffffff;
+}
+
+@media (max-width:700px) {
+  .app {
+    padding-top: 70px;
+
+  }
+}
+
+.pageTitle {
+  min-width: 130px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 30px;
+  padding: 4px;
+  color: #ffffff;
+  font-family: 'Montserrat';
+  font-weight: bold;
+  padding: 0 0 0 5px;
+}
+
+.page_title_language {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.languages {
+  overflow-x: scroll;
+  white-space: nowrap;
+  padding: 4px 0
+}
+
+.languages::-webkit-scrollbar {
+  display: none
+}
+
+/* .MuiContainer-root {
+  padding: 0 !important;
+} */
+@media (max-width: 700px) {
+  .MuiContainer-root {
+    padding: 0 !important;
+  }
+
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 3px
+  }
+
+  .series_navigation {
+    display: none
+  }
+}
+
+.genres_div {
+  padding: 0 5px;
+}
+
+.arrivingToday {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  overflow-y: auto;
+  /* white-space: nowrap; */
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.arrivingToday div {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  position: relative;
+}
+
+.arrivingToday .subTitle {
+  display: none;
+}
+
+.arrivingToday .title_div {
+  position: absolute;
+  bottom: 2px;
+  background-color: #000000;
+  opacity: 0.7
+}
+
+.arrivingToday .title {
+  opacity: 1
+}
+
+.arrivingToday img {
+  display: block
+}
+
+.loading_div {
+  width: 100px;
+  height: 100px;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.loading_div div {
+  width: 100px;
+  height: 100px;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  margin: auto;
+}

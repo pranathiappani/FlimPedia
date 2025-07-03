@@ -1,0 +1,62 @@
+.media {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    padding: 5px;
+    margin: 5px 0;
+    background-color: #282c34;
+    border-radius: 0px;
+    position: relative;
+    font-family: "Montserrat",
+        sans-serif;
+    overflow: hidden;
+}
+
+.img_content {
+    width: 100px;
+}
+
+.media:hover {
+    cursor: pointer;
+    background-color: #404040;
+}
+
+@media (max-width: 550px) {
+    .media {
+        width: 46%;
+    }
+}
+
+.poster {
+    border-radius: 0px;
+    max-height: 300px;
+    width: 100%;
+    transition: transform .4s;
+}
+
+.poster:hover {
+    transform: scale(1.2);
+}
+
+.img_div {
+    height: auto;
+    overflow: hidden;
+}
+
+.title {
+    color: #ffffff;
+    width: 100%;
+    text-align: center;
+    font-size: 17px;
+    padding: 8px 0;
+    z-index: 9;
+}
+
+.subTitle {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 3px;
+    padding: 0 2px;
+    padding-bottom: 3px;
+    z-index: 9;
+}

@@ -1,0 +1,29 @@
+{
+    "name": "Filmflix",
+    "short_name": "Filmflix",
+    "description":"search trending movies and tvshows",
+    "icons": [{
+        "src":"favicon/maskable_icon.png",
+        "sizes":"80x80",
+        "type":"image/png",
+        "purpose":"any maskable"
+    },{
+        "src":"favicon/favicon.ico",
+        "type":"image/ico",
+            "sizes":"48x48"
+    },{
+        "src": "favicon/android-chrome-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+    }, {
+        "src": "favicon/android-chrome-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+    }],
+  "start_url":"/",
+    "display":"standalone",
+    "theme_color":"#708090",
+    "background_color":"#444444",
+    "scope":"/",
+    "prefer_related_applications":true
+}
