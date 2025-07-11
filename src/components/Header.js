@@ -11,7 +11,7 @@ const Header = () => {
   };
   window.addEventListener('scroll', change)
   return (
-    <span onClick={gototop} className={scroll ? "header active" : "header"}>filmflix</span>
+    <span onClick={gototop} className={scroll ? "header active" : "header"}>FlimPedia</span>
   )
 }
 
