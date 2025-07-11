@@ -1,4 +1,4 @@
-# filmflix
+# filmpedia
 ![GitHub branch checks state](https://img.shields.io/github/checks-status/kaushikappani/filmflix/main)
 ![GitHub top language](https://img.shields.io/github/languages/top/kaushikappani/filmflix)
 ## Get movie reviews and watch providers
