@@ -12,7 +12,7 @@ const languages = [
         "alpha2": "hi"
     },
     {
-        "English": "tamil",
+        "English": "Tamil",
         "alpha2": "ta"
     }
 

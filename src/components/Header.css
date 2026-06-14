@@ -1,31 +1,78 @@
 .header {
     width: 100%;
     position: fixed;
+    top: 0;
+    left: 0;
     display: flex;
     justify-content: center;
-    text-transform: uppercase;
-    background-color: #181818;
-    font-size: 4vw;
-    color: #ffffff;
-    z-index: 10;
-    padding-bottom: 15px;
-    box-shadow: 0px 1px 5px #000000;
+    align-items: center;
+    gap: 12px;
+    background-color: rgba(11, 15, 25, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    z-index: 100;
+    padding: 20px 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     font-family: 'Montserrat', sans-serif;
-    font-weight: bolder;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.headerIcon {
+    font-size: 32px !important;
+    color: #ff416c;
+    filter: drop-shadow(0 0 8px rgba(255, 65, 108, 0.4));
+    transition: all 0.4s ease;
+}
+
+.headerText {
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ff416c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 28px;
+    letter-spacing: 2px;
 }
 
 .header.active {
-    font-size: 2vw;
-
+    padding: 12px 0;
+    background-color: rgba(11, 15, 25, 0.92);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-@media(max-width:1000px) {
+.header.active .headerIcon {
+    font-size: 26px !important;
+}
+
+.header.active .headerText {
+    font-size: 22px;
+}
+
+@media(max-width:700px) {
     .header {
-        padding-top: 15px;
-        font-size: 6vw
+        padding: 16px 0;
+    }
+    
+    .headerIcon {
+        font-size: 26px !important;
+    }
+    
+    .headerText {
+        font-size: 22px;
     }
 
     .header.active {
-        font-size: 4vw;
+        padding: 10px 0;
+    }
+    
+    .header.active .headerIcon {
+        font-size: 22px !important;
+    }
+    
+    .header.active .headerText {
+        font-size: 18px;
     }
 }

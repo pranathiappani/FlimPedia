@@ -5,51 +5,81 @@ import Paginaion from '../components/Paginaion';
 import Genres from "../components/Genres";
 import useGenre from "../Hooks/useGenre";
 import langData from "../languages";
-import Languages from "../components/Languages"
+import Languages from "../components/Languages";
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+  palette: {
+    type: 'dark',
+    primary: {
+      main: '#6366f1', // Indigo color for dropdown outlines on focus
+    },
+  },
+});
+
 const Movies = () => {
     window.scrollTo(0, 0);
     const [page, setPage] = useState(1);
     const [content, setContent] = useState([]);
-    const [numPages, setNumpages] = useState();
+    const [numPages, setNumpages] = useState(0);
     const [selectedGenres, setSelectedGenres] = useState([]);
     const [genres, setGenres] = useState([]);
     const [lang, setLanguange] = useState("en");
     const genreForURL = useGenre(selectedGenres);
 
     const fetchMovies = async () => {
-        const date = new Date().toISOString();
-        const { data } = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=release_date.desc&include_adult=true&include_video=true&page=${page}&with_genres=${genreForURL}&with_original_language=${lang}&release_date.lte=${date}`)
-        setContent(data.results);
-        setNumpages(data.total_pages)
+        try {
+            const date = new Date().toISOString();
+            const { data } = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=release_date.desc&include_adult=true&include_video=true&page=${page}&with_genres=${genreForURL}&with_original_language=${lang}&release_date.lte=${date}`)
+            setContent(data.results || []);
+            setNumpages(data.total_pages || 0);
+        } catch (error) {
+            console.error(error);
+        }
     };
+
     useEffect(() => {
         fetchMovies()
         // eslint-disable-next-line
     }, [page, genreForURL, lang]);
+
     const setLang = (e) => {
         setPage(1)
         setLanguange(e.alpha2)
     }
+
     return (
         <div>
-            <div className="page_title_language">
-                <span className='pageTitle'>Movies</span>
-                <div className="languages">
-                    <Languages
-                        data={langData}
-                        selected={lang}
-                        handleAdd={setLang}
-                    />
+            <div className="pageTitle">
+                <span>Movies</span>
+            </div>
+            
+            <ThemeProvider theme={theme}>
+                <div className="filter_panel">
+                    <div className="filter_row">
+                        <div className="filter_group">
+                            <span className="filter_label">Language</span>
+                            <div className="languages">
+                                <Languages
+                                    data={langData}
+                                    selected={lang}
+                                    handleAdd={setLang}
+                                />
+                            </div>
+                        </div>
+                        <Genres
+                            type='movie'
+                            label="Genres"
+                            selectedGenres={selectedGenres} 
+                            genres={genres}
+                            setSelectedGenres={setSelectedGenres} 
+                            setGenres={setGenres}
+                            setPage={setPage}
+                        />
+                    </div>
                 </div>
-            </div>
-            <div className="genres_div">
-                <Genres
-                    type='movie'
-                    selectedGenres={selectedGenres} genres={genres}
-                    setSelectedGenres={setSelectedGenres} setGenres={setGenres}
-                    setPage={setPage}
-                />
-            </div>
+            </ThemeProvider>
+
             <div className="trending" style={{ display: "flex", flexWrap: 'wrap', justifyContent: 'space-around' }}>
                 {
                     content && content.map(e => {
@@ -64,4 +94,4 @@ const Movies = () => {
     )
 }
 
-export default Movies
+export default Movies;

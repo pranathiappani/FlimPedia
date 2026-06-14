@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 
@@ -7,46 +7,65 @@ import WhatshotIcon from '@material-ui/icons/Whatshot';
 import LocalMoviesIcon from '@material-ui/icons/LocalMovies';
 import TvIcon from '@material-ui/icons/Tv';
 import SearchIcon from '@material-ui/icons/Search';
-import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
-const useStyles = makeStyles({
-  root: {
-    width: '100vw',
-    position: "fixed",
-    bottom: 0,
-    backgroundColor: "#181818",
-    zIndex: 10,
+import { Link, useLocation } from "react-router-dom";
+
+const theme = createMuiTheme({
+  palette: {
+    type: 'dark',
+    primary: {
+      main: '#ff416c', // Modern pink-red brand accent color
+    },
+    text: {
+      secondary: '#94a3b8', // Slate grey for inactive icons
+    }
   },
 });
-const styles = {
-  color: '#ffffff'
-}
+
+const useStyles = makeStyles({
+  root: {
+    width: '100%',
+    position: "fixed",
+    bottom: 0,
+    backgroundColor: "rgba(11, 15, 25, 0.85)",
+    backdropFilter: "blur(16px)",
+    WebkitBackdropFilter: "blur(16px)",
+    borderTop: "1px solid rgba(255, 255, 255, 0.06)",
+    zIndex: 100,
+    boxShadow: "0 -4px 20px rgba(0, 0, 0, 0.4)",
+    height: '64px',
+  },
+});
 
 export default function LabelBottomNavigation() {
-  let path = "home";
   const location = useLocation().pathname;
-  if (location === "/") {
-    path = "Trending";
-  } else if (location === "/movies") {
-    path = "Movies"
+  let path = "Trending";
+  if (location === "/movies") {
+    path = "Movies";
   } else if (location === "/series") {
-    path = "TV Series"
-  } else {
-    path = "Search"
+    path = "TV Series";
+  } else if (location === "/search") {
+    path = "Search";
   }
 
   const classes = useStyles();
   const [value, setValue] = React.useState(path);
+
+  React.useEffect(() => {
+    setValue(path);
+  }, [location, path]);
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
   return (
-    <BottomNavigation value={value} onChange={handleChange} className={classes.root} >
-      <BottomNavigationAction component={Link} to="/" style={styles} label="Trending" value="Trending" icon={<WhatshotIcon />} />
-      <BottomNavigationAction component={Link} to="/movies" style={styles} label="Movies" value="Movies" icon={<LocalMoviesIcon />} />
-      <BottomNavigationAction component={Link} to="/series" style={styles} label="TV Series" value="TV Series" icon={<TvIcon />} />
-      <BottomNavigationAction component={Link} to="/search" style={styles} label="Search" value="Search" icon={<SearchIcon />} />
-    </BottomNavigation>
+    <ThemeProvider theme={theme}>
+      <BottomNavigation value={value} onChange={handleChange} className={classes.root} showLabels>
+        <BottomNavigationAction component={Link} to="/" label="Trending" value="Trending" icon={<WhatshotIcon />} />
+        <BottomNavigationAction component={Link} to="/movies" label="Movies" value="Movies" icon={<LocalMoviesIcon />} />
+        <BottomNavigationAction component={Link} to="/series" label="TV Series" value="TV Series" icon={<TvIcon />} />
+        <BottomNavigationAction component={Link} to="/search" label="Search" value="Search" icon={<SearchIcon />} />
+      </BottomNavigation>
+    </ThemeProvider>
   );
 }
