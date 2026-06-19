@@ -33,7 +33,7 @@ const Languages = ({ data, selected, handleAdd }) => {
     };
 
     return (
-        <FormControl variant="outlined" size="small" className={classes.formControl}>
+        <FormControl variant="outlined" size="small" className={`${classes.formControl} filter_select_form`}>
             <Select
                 value={selected}
                 onChange={handleChange}

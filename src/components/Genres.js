@@ -81,10 +81,10 @@ const Genres = ({
     }, [type]);
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', flex: 1, minWidth: '250px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
+        <div className="genres_wrapper_div">
+            <div className="genres_header_row">
                 {label && <span className="filter_label">{label}</span>}
-                <FormControl variant="outlined" size="small" className={classes.formControl}>
+                <FormControl variant="outlined" size="small" className={`${classes.formControl} filter_select_form`}>
                     <Select
                         value=""
                         onChange={handleAdd}

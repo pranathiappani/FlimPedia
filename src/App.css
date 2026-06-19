@@ -219,13 +219,49 @@ body {
   
   .filter_row {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
+    align-items: stretch;
+    gap: 16px;
+  }
+  
+  .filter_group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    width: 100%;
+  }
+
+  .genres_header_row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    width: 100%;
+  }
+
+  .filter_select_form {
+    width: 100% !important;
+    min-width: 100% !important;
+    margin: 4px 0 !important;
+  }
+
+  .languages {
+    width: 100%;
   }
   
   .filter_label {
     padding-top: 0;
   }
+}
+
+.genres_header_row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  width: 100%;
+}
+
+.filter_select_form {
+  margin: 4px !important;
 }
 
 .selected_genres_chips {
@@ -238,5 +274,20 @@ body {
 @media (max-width: 700px) {
   .selected_genres_chips {
     padding-left: 0;
+  }
+}
+
+.genres_wrapper_div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  min-width: 250px;
+}
+
+@media (max-width: 700px) {
+  .genres_wrapper_div {
+    min-width: 100% !important;
+    width: 100%;
   }
 }
