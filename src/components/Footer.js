@@ -6,7 +6,6 @@ import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import WhatshotIcon from '@material-ui/icons/Whatshot';
 import LocalMoviesIcon from '@material-ui/icons/LocalMovies';
 import TvIcon from '@material-ui/icons/Tv';
-import SearchIcon from '@material-ui/icons/Search';
 import { Link, useLocation } from "react-router-dom";
 
 const theme = createMuiTheme({
@@ -43,8 +42,6 @@ export default function LabelBottomNavigation() {
     path = "Movies";
   } else if (location === "/series") {
     path = "TV Series";
-  } else if (location === "/search") {
-    path = "Search";
   }
 
   const classes = useStyles();
@@ -64,7 +61,6 @@ export default function LabelBottomNavigation() {
         <BottomNavigationAction component={Link} to="/" label="Trending" value="Trending" icon={<WhatshotIcon />} />
         <BottomNavigationAction component={Link} to="/movies" label="Movies" value="Movies" icon={<LocalMoviesIcon />} />
         <BottomNavigationAction component={Link} to="/series" label="TV Series" value="TV Series" icon={<TvIcon />} />
-        <BottomNavigationAction component={Link} to="/search" label="Search" value="Search" icon={<SearchIcon />} />
       </BottomNavigation>
     </ThemeProvider>
   );

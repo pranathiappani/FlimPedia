@@ -8,6 +8,8 @@ import Trending from "./Pages/Trending";
 import Movies from "./Pages/Movies";
 import Series from "./Pages/Series";
 import Search from "./Pages/Search";
+import ChatBot from "./Pages/ChatBot";
+
 function App() {
   return (
     <BrowserRouter>
@@ -23,7 +25,7 @@ function App() {
         </Container>
       </div>
       <Footer />
-
+      <ChatBot />
     </BrowserRouter>
   )
 }

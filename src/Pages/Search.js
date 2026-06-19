@@ -1,24 +1,19 @@
-import { Button, createMuiTheme, Tab, Tabs, TextField, ThemeProvider } from '@material-ui/core';
+import { createMuiTheme, Tab, Tabs, ThemeProvider } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import Content from '../components/Content';
-import SearchIcon from "@material-ui/icons/Search";
 import Paginaion from '../components/Paginaion';
 import axios from 'axios';
-
-const searchContainerStyle = {
-    display: "flex",
-    margin: "20px 0",
-    width: '100%',
-    gap: '10px'
-}
+import { useLocation } from 'react-router-dom';
 
 const Search = () => {
     window.scrollTo(0, 0);
     const [type, setType] = useState(0);
     const [page, setPage] = useState(1);
-    const [searchText, setSearchText] = useState("");
     const [content, setContent] = useState([]);
     const [numPages, setNumPages] = useState(0);
+
+    const location = useLocation();
+    const searchText = new URLSearchParams(location.search).get("q") || "";
 
     const theme = createMuiTheme({
         palette: {
@@ -50,39 +45,23 @@ const Search = () => {
     };
 
     useEffect(() => {
+        setPage(1); // reset to page 1 when search text changes
+    }, [searchText]);
+
+    useEffect(() => {
         fetchSearch();
         // eslint-disable-next-line
-    }, [type, page]);
-
-    const handelSubmit = (e) => {
-        e.preventDefault();
-        setPage(1);
-        fetchSearch();
-    }
+    }, [type, page, searchText]);
 
     return (
-        <div>
+        <div style={{ paddingTop: '20px' }}>
             <ThemeProvider theme={theme}>
-                <form onSubmit={handelSubmit}>
-                    <div style={searchContainerStyle}>
-                        <TextField 
-                            onChange={e => setSearchText(e.target.value)} 
-                            style={{ flex: 1 }} 
-                            className="searchBox" 
-                            label="Search movies or TV shows..." 
-                            variant="outlined"
-                            size="small"
-                        />
-                        <Button 
-                            type="submit" 
-                            variant="contained" 
-                            color="primary"
-                            style={{ minWidth: '54px', borderRadius: '8px' }}
-                        >
-                            <SearchIcon />
-                        </Button>
-                    </div>
-                </form>
+                {searchText && (
+                    <h2 style={{ marginBottom: '20px', fontWeight: '500' }}>
+                        Results for "<span style={{ color: '#ff416c' }}>{searchText}</span>"
+                    </h2>
+                )}
+                
                 <Tabs 
                     onChange={(e, ne) => {
                         setType(ne);
@@ -106,7 +85,12 @@ const Search = () => {
                 }
                 {searchText && content.length === 0 && (
                     <div style={{ padding: '40px 0', textAlign: 'center', width: '100%' }}>
-                        <h3 style={{ color: '#94a3b8', fontWeight: '500' }}>No {type ? "TV Series" : "Movies"} Found</h3>
+                        <h3 style={{ color: '#94a3b8', fontWeight: '500' }}>No {type ? "TV Series" : "Movies"} Found for "{searchText}"</h3>
+                    </div>
+                )}
+                {!searchText && (
+                    <div style={{ padding: '40px 0', textAlign: 'center', width: '100%' }}>
+                        <h3 style={{ color: '#94a3b8', fontWeight: '500' }}>Type a query in the header to search!</h3>
                     </div>
                 )}
             </div>
