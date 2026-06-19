@@ -57,11 +57,24 @@ const ChatBot = () => {
                 }
                 .markdown-body p { margin-top: 0; margin-bottom: 8px; }
                 .markdown-body ul { margin-top: 0; padding-left: 20px; }
+                
+                /* Mobile responsiveness for ChatBot */
+                @media (max-width: 600px) {
+                    .chatbot-wrapper {
+                        bottom: 85px !important;
+                        right: 15px !important;
+                    }
+                    .chat-window-container {
+                        width: calc(100vw - 30px) !important;
+                        height: 65vh !important;
+                        min-height: 400px;
+                    }
+                }
                 `}
             </style>
-            <div style={styles.floatingWrapper}>
+            <div style={styles.floatingWrapper} className="chatbot-wrapper">
                 {isOpen && (
-                    <div style={styles.chatWindow}>
+                    <div style={styles.chatWindow} className="chat-window-container">
                         <div style={styles.header}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                                 <span style={{ fontSize: '20px' }}>🤖</span>

@@ -105,8 +105,8 @@ app.post("/chat", async (req, res) => {
     }
 });
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, async () => {
     await initMcp();
-    console.log(`Flimpedia API is running on http://localhost:${PORT}`);
+    console.log(`Flimpedia API is running on port ${PORT}`);
 });
